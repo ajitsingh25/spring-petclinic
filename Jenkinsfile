@@ -9,4 +9,5 @@ node('master') {
 
           checkout scm
        }
+    }
 }
