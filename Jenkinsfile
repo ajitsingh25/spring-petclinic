@@ -1,14 +1,12 @@
-#!groovy
+node('master') {
 
-pipeline {
-  agent none
 
-  stages {
+    currentBuild.result = "SUCCESS"
 
-    stage('Checkout'){
-      step {
-             checkout scm
-           }
+    try {
+
+       stage('Checkout'){
+
+          checkout scm
        }
-  }
 }
