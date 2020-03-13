@@ -3,10 +3,6 @@
 pipeline {
   agent none
   stages {
-    stage('Checkout'){
-
-          checkout scm
-       }
     stage('Maven Install') {
       agent {
         docker {
