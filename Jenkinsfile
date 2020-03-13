@@ -8,4 +8,8 @@ node('master') {
 
           checkout scm
        }
+
+       stage('Test'){
+	 sh './mvnw package' 
+	}
 }
