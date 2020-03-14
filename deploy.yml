@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: deploy
   become: true
   vars:
     create_containers: 4
