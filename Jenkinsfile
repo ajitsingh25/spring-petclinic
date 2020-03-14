@@ -26,6 +26,6 @@ node('master') {
        }
 
        stage('Docker Deploy') {
-         sh 'ansible-playbook deploy.yml' 
+         sh 'ansible-playbook -i ~/ansible/hosts deploy.yml' 
        }
 }
