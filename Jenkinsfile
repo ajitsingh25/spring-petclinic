@@ -2,7 +2,8 @@ node('master') {
 
 
     currentBuild.result = "SUCCESS"
-
+       jdk = tool name: '/etc/alternatives/jre_1.8.0'
+       env.JAVA_HOME = "${jdk}"
 
        stage('Checkout'){
 
