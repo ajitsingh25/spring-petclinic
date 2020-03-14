@@ -2,8 +2,6 @@ node('master') {
 
 
     currentBuild.result = "SUCCESS"
-       jdk = tool name: '/etc/alternatives/jre_1.8.0'
-       env.JAVA_HOME = "${jdk}"
 
        stage('Checkout'){
 
@@ -11,6 +9,7 @@ node('master') {
        }
 
        stage('Test'){
+         sh 'export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el7_7.x86_64/jre'
 	 sh './mvnw package' 
 	}
 
