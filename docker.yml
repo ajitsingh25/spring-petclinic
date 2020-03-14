@@ -1,0 +1,30 @@
+---
+- hosts: localhost
+  become: true
+  vars:
+    create_containers: 4
+    my_container: clinic
+    my_image: ajitsingh25/spring-petclinic
+
+  tasks:
+    - name: Install Docker Module for Python
+      pip:
+        name: docker
+
+    - name: remove container
+      docker_container:
+        name: "{{ my_container }}"
+        state: absent
+
+    - name: Pull default Docker image
+      docker_image:
+        name: "{{ my_image }}"
+        source: pull
+
+    - name: Create Container
+      docker_container:
+        name: "{{ my_container }}"
+        image: "{{ my_image }}"
+        state: started
+        ports:
+         - "8080:8080"

@@ -24,4 +24,8 @@ node('master') {
            sh 'docker push ajitsingh25/spring-petclinic:latest'
          }
        }
+
+       stage('Docker Deploy') {
+         sh 'ansible-playbook docker.yml' 
+       }
 }
