@@ -2,10 +2,16 @@
 - hosts: deploy
   become: true
   vars:
-    create_containers: 4
     my_container: clinic
     my_image: ajitsingh25/spring-petclinic
 
+  pre_tasks:
+    - shell: echo "Ensure Docker Installed"
+
+  roles:
+    - geerlingguy.pip
+    - geerlingguy.docker
+    
   tasks:
     - name: Install Docker Module for Python
       pip:
@@ -28,3 +34,6 @@
         state: started
         ports:
          - "8080:8080"
+  
+  post_tasks:
+    - shell: echo 'goodbye'
