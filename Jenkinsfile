@@ -26,7 +26,7 @@ node('master') {
        }
 
        stage('Docker Deploy') {
-	 sh "cd /home/ajit_web25/ansible"
-	 sh ' sudo -H -u ajit_web25 bash -c "ansible-playbook -i hosts deploy.yml"'
+	 sh 'cp deploy.yml /home/ajit_web25/ansible'
+	 sh 'sudo -H -u ajit_web25 bash -c "cd /home/ajit_web25/ansible; ansible-playbook -i hosts deploy.yml"'
        }
 }
